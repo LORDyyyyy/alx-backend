@@ -1,20 +1,22 @@
 Current cache:
-Current cache:
 A: Hello
 B: World
 C: Holberton
-Hello
-World
-Holberton
-None
+D: School
+DISCARD: A
 Current cache:
-A: Hello
-B: World
-C: Holberton
-Current cache:
-A: Street
 B: World
 C: Holberton
 D: School
 E: Battery
-Street
+Current cache:
+B: World
+C: Street
+D: School
+E: Battery
+DISCARD: B
+Current cache:
+C: Street
+D: School
+E: Battery
+F: Mission
