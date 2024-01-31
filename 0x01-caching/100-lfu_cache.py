@@ -27,7 +27,8 @@ class LFUCache(BaseCaching):
             self.freq[key] += 1
             return
         elif len(self.cache_data) >= super().MAX_ITEMS:
-            min_freq_keys = [k for k, v in self.freq.items() if v == min(self.freq.values())]
+            min_freq_keys = [k for k, v in self.freq.items()
+                             if v == min(self.freq.values())]
             min_timestamp_key = min(min_freq_keys, key=lambda k: self.freq[k])
             self.cache_data.pop(min_timestamp_key)
             self.freq.pop(min_timestamp_key)
