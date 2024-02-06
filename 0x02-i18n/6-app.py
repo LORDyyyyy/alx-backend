@@ -28,6 +28,8 @@ def get_locale():
     """ get the locale """
     if 'locale' in request.args.keys():
         return request.args['locale']
+    if g.user is not None and g.user['locale'] in app.config['LANGUAGES']:
+        return g.user['locale']
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
@@ -50,7 +52,7 @@ def get_user():
 @app.route('/')
 def hello():
     """ index """
-    return render_template('5-index.html', user=g.user)
+    return render_template('6-index.html', user=g.user)
 
 
 if __name__ == '__main__':
