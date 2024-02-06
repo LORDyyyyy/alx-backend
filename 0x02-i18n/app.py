@@ -2,7 +2,10 @@
 """ Basic Flask app """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+from datetime import datetime
 import pytz
+from babel import dates
+from zoneinfo import ZoneInfo
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -69,8 +72,9 @@ def get_user():
 @app.route('/')
 def hello():
     """ index """
-    return render_template('7-index.html', user=g.user,
-                           timezone=get_timezone())
+    date = datetime.now(tz=ZoneInfo(get_timezone()))
+    date = dates.format_datetime(date, locale=get_locale())
+    return render_template('index.html', user=g.user, date=date)
 
 
 if __name__ == '__main__':
