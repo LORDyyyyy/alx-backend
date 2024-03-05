@@ -31,7 +31,7 @@ class Server:
         assert isinstance(page_size, int) and page_size > 0, "Page size must\
             be an integer greater than 0"
 
-        index = Server.index_range(page, page_size)
+        index = self.index_range(page, page_size)
 
         if index[1] > len(self.dataset()) or index[0] > len(self.dataset()):
             return []
